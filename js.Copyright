@@ -1,0 +1,25 @@
+// Copyright (c) Ghibble by mod.1 2025. All IP Rights Reserved. Humanly innovated and originated by mod.1 using ai-as-a-toolbox. 2025
+
+const fs = require('fs');
+const path = require('path');
+
+const HEADER = `// Copyright (c) Ghibble by mod.1 2025. All IP Rights Reserved. Humanly innovated and originated by mod.1 using ai-as-a-toolbox. 2025
+`;
+
+const validExt = ['.js', '.jsx', '.ts', '.tsx', '.sh', '.md', '.json'];
+
+function walk(dir, cb) {
+  fs.readdirSync(dir).forEach(filename => {
+    const filepath = path.join(dir, filename);
+    if (fs.statSync(filepath).isDirectory()) walk(filepath, cb);
+    else if (validExt.includes(path.extname(filename))) cb(filepath);
+  });
+}
+
+walk('./', filepath => {
+  let content = fs.readFileSync(filepath, 'utf8');
+  if (!content.startsWith(HEADER)) {
+    fs.writeFileSync(filepath, HEADER + content, 'utf8');
+    console.log(`Stamped: ${filepath}`);
+  }
+});
