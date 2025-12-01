@@ -1,0 +1,3 @@
+cd /storage/shared
+git clone <your-ghibble-git-repo-url> ghibble-mvp
+cd ghibble-mvp
