@@ -1,0 +1,27 @@
+# Step 1: Clone repo with ownership anchored
+git clone https://github.com/KingMe9956/ghibble-ai-bubble.git
+cd ghibble-ai-bubble
+
+# Step 2: Install dependencies
+npm install
+
+# Step 3: Set environment variables for Infura and wallet
+export INFURA_API_KEY="0ce843763c0249408af5d4fb0965cbe2"
+export TREASURY_WALLET="0x179F4e64B8df0B18Ee5692984d507Cd0bfaa9006"
+export OWNER_GITHUB="KingMe9956"
+
+# Step 4: Build the app for Android
+npm run build-android
+
+# Step 5: Start local development server
+npm start
+
+# Step 6: For production deploy backend and smart contracts
+npm run deploy-smartcontracts
+npm run deploy-backend
+
+# Step 7: Generate and upload static assets to IPFS
+npm run ipfs-upload
+
+# Step 8: Finalize launch on Play Store or App Store using provided CI/CD scripts
+npm run release
