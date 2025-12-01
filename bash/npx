@@ -1,0 +1,2 @@
+# Run the app on your device
+npx react-native run-android
