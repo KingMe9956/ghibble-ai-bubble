@@ -1,0 +1,5 @@
+pkg uninstall nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
+source ~/.profile  # or source ~/.bashrc if applicable
+nvm install 18
+nvm use 18
