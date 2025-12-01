@@ -1,0 +1,1 @@
+If your device isn't detected, ensure USB debugging is enabled and your device is authorized.For Wi-Fi debugging, use adb connect <device_ip>:port.Focus on getting the basic app working before adding complexity.This approach gets your AI assistant on your device now—small, manageable, and a solid foundation for expansion.
