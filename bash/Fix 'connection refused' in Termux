@@ -1,0 +1,10 @@
+The “connection refused” is a common Android issue when trying to use ADB over Wi‑Fi inside Termux without a USB session to start it. This happens because the tablet’s ADB daemon (“adbd”) isn’t yet listening on the network port, so there’s nothing for Termux to connect to. Here’s exactly how to fix it, one step at a time ����.Step 1 – Temporarily enable TCP‑mode ADBIn Termux, run:adb kill-server
+adb tcpip 5555If this prints something like “error: no devices/emulators found,” that’s expected right now. It just resets ADB.Step 2 – Start listening manually through developer optionsOpen Settings → Developer options.Turn Wireless debugging OFF, wait a few seconds, then turn it ON again.
+This restarts the internal ADB daemon.Tap “Pair device with pairing code.”
+Note the IP address, pairing port, and code.Step 3 – Pair again from TermuxReplace the text below with your own IP and pairing port:adb pair 192.168.x.x:37211Enter the six‑digit code when prompted.
+You should see:Successfully paired to 192.168.x.x:5555Step 4 – Find the correct connection portStay on the Wireless debugging screen.
+Tap “Paired devices → <your device >”.
+You should see something like IP address 192.168.x.x:5555 or a different number (e.g. 37123).
+That is the ADB connection port.Now connect using that exact address:adb connect 192.168.x.x:5555If it says “connected to …”, you’re ready.
+Validate with:adb devicesand you should see:List of devices attached
+192.168.x.x:5555    deviceStep 5 – If it still says “connection refused”Try one of these quick fixes cited in verified sources ��:Toggle Wireless debugging off → on again, then repeat the pairing and connect steps.Make sure both IPv4 addresses actually match your Wi‑Fi (the tablet and Termux shell must be on the same network).Restart Wi‑Fi or briefly enable USB debugging over a cable once; then run in Termux:adb tcpip 5555Disconnect the cable and rerunadb connect 192.168.x.x:5555Once your adb devices shows the IP and status “device,” reply Next and we’ll execute the command to launch your Ghibble MVP React Native app directly on the tablet.
