@@ -1,0 +1,2 @@
+pkg update && pkg upgrade
+pkg install git nodejs openjdk-17 zsh
